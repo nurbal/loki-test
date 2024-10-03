@@ -27,6 +27,8 @@ def main():
     logger = logging.getLogger(__name__)
     logger.addHandler(handler)
 
+    logger.setLevel(logging.DEBUG)
+
     logger.info("Test info log")
     logger.debug("Test debug log")
     logger.warning("Test warning log")
