@@ -24,9 +24,15 @@ def main():
     otlp_exporter = OTLPLogExporter(endpoint) 
     logger_provider.add_log_record_processor(BatchLogRecordProcessor(otlp_exporter))
     handler = LoggingHandler(level=logging.NOTSET, logger_provider=logger_provider)
-    logger = logging.getLogger(__name__)
-    logger.addHandler(handler)
 
+    logging.basicConfig(
+                handlers=[handler,logging.StreamHandler()],
+                format="%(asctime)-15s::%(levelname)s::%(name)s::%(message)s",
+                level=logging.DEBUG,
+            )
+
+    logger = logging.getLogger(__name__)
+    # logger.addHandler(handler)
     logger.setLevel(logging.DEBUG)
 
     logger.info("Test info log")
