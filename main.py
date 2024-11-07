@@ -40,6 +40,8 @@ def main():
     logger.warning("Test warning log")
     logger.error("Test error log")
 
+    logging.debug("Test debug log (logging.debug() call)")
+
     print ("os.uname().nodename: ", os.uname().nodename)
 
 
